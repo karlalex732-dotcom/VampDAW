@@ -1,0 +1,27 @@
+#include "music_generators.hpp"
+static void musicGeneratorTests(){
+    {HarmonyOptions h;auto first=generateChords(h);h.seed++;auto next=generateChords(h);check(first.front().pitch!=next.front().pitch,"Chord reroll changes inversion with fixed musical settings");MelodyOptions bass;bass.bass=true;h.octave=2;auto notes=generateMelody(h,bass);check(!notes.empty(),"Bass generator creates notes");for(auto n:notes)check(n.pitch<=60&&scaleContains(n.pitch,h.root,h.scale),"Bass notes stay in low register and selected scale");}
+    int rhythmCases=0,harmonyCases=0;std::set<std::string>grooves;
+    for(int style=0;style<20;style++)for(int bars:{1,4,16,64}){RhythmOptions o;o.style=style;o.bars=bars;auto part=generateRhythm(o),again=generateRhythm(o);std::string signature;check(!part[0].empty()&&!part[1].empty(),"Every drum style supplies kick and snare");for(int role=0;role<8;role++){check(part[role].size()==again[role].size(),"Seeded drum generation repeats");for(size_t i=0;i<part[role].size();i++){auto n=part[role][i];check(n.beat>=0&&n.beat<bars*4&&n.length>0&&n.velocity>0&&n.velocity<=1,"Rhythm bounds and velocity");check(n.beat==again[role][i].beat&&n.velocity==again[role][i].velocity,"Seeded timing and velocity repeat");if(bars==4)signature+=std::to_string(role)+":"+std::to_string(n.beat)+";";}}if(bars==4)grooves.insert(signature);rhythmCases++;}
+    check(grooves.size()>=10,"Styles produce distinct rhythm families");
+    int subgenreCases=0;
+    for(int style=0;style<DrumGenreCount;style++){
+        std::set<std::string>family;
+        for(int sub=1;sub<DrumSubgenreCount;sub++)for(int bars:{1,4,16}){
+            RhythmOptions o;o.style=style;o.subgenre=sub;o.bars=bars;o.humanize=0;o.variation=0;o.density=1;
+            auto part=generateRhythm(o),again=generateRhythm(o);std::string signature;
+            check(!part[0].empty()&&!part[1].empty(),"Every subgenre has kick and snare anchors");
+            for(int role=0;role<DrumRoles;role++){check(part[role].size()==again[role].size(),"Subgenre seed is deterministic");for(size_t i=0;i<part[role].size();i++){auto n=part[role][i];check(n.beat==again[role][i].beat&&n.velocity==again[role][i].velocity,"Subgenre timing and dynamics repeat");check(n.beat>=0&&n.beat<bars*4&&n.beat+n.length<=bars*4+.13&&n.velocity>0&&n.velocity<=1,"Subgenre MIDI stays in range");if(bars==4)signature+=std::to_string(role)+":"+std::to_string(n.beat)+";";}}
+            if(bars==4)family.insert(signature);subgenreCases++;
+        }
+        check(family.size()==5,"Each genre's five profiles change the actual rhythm");
+    }
+    for(int scale=0;scale<ScaleCount;scale++)for(int key=0;key<12;key++)for(int voice=0;voice<4;voice++){HarmonyOptions h;h.root=key;h.scale=scale;h.voicing=voice;h.octave=5;auto chords=generateChords(h);MelodyOptions m;auto melody=generateMelody(h,m);check(!chords.empty()&&!melody.empty(),"Chord and melody generation creates notes");for(auto*notes:{&chords,&melody})for(auto n:*notes)check(n.pitch>=0&&n.pitch<=127&&scaleContains(n.pitch,key,scale)&&n.beat>=0&&n.length>0&&n.beat+n.length<=h.bars*4+.0001,"Generators obey key, scale, MIDI and pattern bounds");harmonyCases++;}
+    Project source;source.tracks.resize(1);source.tracks[0].notes={{0,1,60,.7f}};source.tracks[0].clips={{0,4}};auto original=projectJson(source,L"work/test-results/generator.vamp");auto sample=std::make_shared<Sample>();sample->rate=48000;sample->left.resize(4800);sample->right.resize(4800);for(int i=0;i<4800;i++)sample->left[i]=sample->right[i]=(float)(.5*std::sin(i*.06)*std::exp(-i/1100.));
+    std::array<GeneratorLane,8>lanes{};lanes[0].sample=sample;lanes[1].sample=sample;RhythmOptions rhythm;rhythm.bars=4;auto candidate=makeDrumProject(source,rhythm,lanes,true,8);check(candidate.project.tracks.size()==3&&candidate.tracks.size()==2,"Loaded user samples become two sample instrument lanes");check(candidate.project.tracks[1].clips[0].beat==8&&candidate.project.tracks[1].patterns[0].notes.size()>0,"Full drum patterns are placed at requested bar");check(projectJson(source,L"work/test-results/generator.vamp")==original,"Candidate preview does not mutate original song");
+    auto plan=compile(candidate.project);auto renderer=std::make_unique<Renderer>();renderer->rate=48000;renderer->locate(8*60/candidate.project.bpm*48000);std::array<float,1024>buffer{};renderer->render(*plan,buffer.data(),512,true);double energy=0;for(float n:buffer)energy+=n*n;check(energy>.01,"Generated MIDI triggers actual loaded samples in renderer");
+    auto replacement=makeHarmonyProject(source,0,HarmonyOptions{},MelodyOptions{},false,false,0,true);check(replacement.project.tracks[0].patterns.empty()&&replacement.project.tracks[0].notes.size()>3,"Explicit replacement edits active notes without extra pattern");
+    bool rejected=false;try{makeDrumProject(source,rhythm,{},true,0);}catch(...){rejected=true;}check(rejected,"Unassigned sample kit is rejected rather than synthesizing unexpected sounds");
+    auto full=source;full.tracks[0].patterns.resize(255);rejected=false;try{makeHarmonyProject(full,0,HarmonyOptions{},MelodyOptions{},false,false,0);}catch(...){rejected=true;}check(rejected,"Pattern limit is respected");
+    std::ofstream(L"work/test-results/music-generators.json")<<Json{{"passed",true},{"rhythm_cases",rhythmCases},{"harmony_cases",harmonyCases},{"distinct_style_results",grooves.size()},{"actual_user_sample_playback",true},{"transactional_preview",true},{"replace_and_new_patterns",true}}.dump(2);
+}

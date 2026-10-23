@@ -1,0 +1,10 @@
+{
+  "name": "Celemony ARA API",
+  "version": "2.3.0",
+  "tag": "releases/2.3.0",
+  "commit": "65ec5c43b943a48cb5446f448a0492db6af8534b",
+  "source": "https://github.com/Celemony/ARA_API",
+  "license": "Apache-2.0",
+  "integration": "ARA 2 over VST3 / Windows x64",
+  "commercial_plugins_tested": false
+}

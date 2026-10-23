@@ -1,0 +1,43 @@
+# Generated build artifacts, downloaded toolchains and local caches
+/build/
+/dist/
+/work/
+/releases/
+/tools/zig-*/
+/tools/w64devkit/
+/tools/innosetup/
+/tools/ffmpeg/
+/tools/stem-build-env/
+/tools/stems/python/
+/tools/stems/models/
+__pycache__/
+*.py[cod]
+*.obj
+*.o
+*.pdb
+*.ilk
+*.log
+/VampDAW*.exe
+
+# Private user material: never commit the working studio's libraries or sessions
+/User Sounds/
+/User Plugins/
+/projects/
+/renders/
+/media/
+/sites/
+*.vamp
+*.flp
+*.als
+.env
+.env.*
+*.pem
+*.key
+.aws/
+.codex/
+.vs/
+.idea/
+Thumbs.db
+Desktop.ini
+
+# Keep dependency-sources/*.tar.* and third_party/ source headers tracked.

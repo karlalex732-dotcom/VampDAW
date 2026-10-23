@@ -1,0 +1,22 @@
+{
+  "product": "VampDAW",
+  "version": "0.4.19-alpha",
+  "tag": "v0.4.19-alpha",
+  "corresponding_source_asset": "VampDAW-0.4.19-source.zip",
+  "corresponding_source_sha256": "6758d96cd8df2b86ee2f034527444ed2b8c19ef8fdf2922287f61cebc42a483b",
+  "original_files_unchanged": true,
+  "original_source_manifest": "SOURCE-SHA256.json",
+  "github_presentation_files": [
+    ".gitattributes",
+    ".github/ISSUE_TEMPLATE/bug_report.yml",
+    ".github/ISSUE_TEMPLATE/config.yml",
+    ".github/ISSUE_TEMPLATE/feature_request.yml",
+    ".gitignore",
+    "CONTRIBUTING.md",
+    "README.md",
+    "README.ru.md",
+    "docs/ALPHA-TESTING.md",
+    "docs/RELEASE-0.4.19.md"
+  ],
+  "notes": "GitHub presentation files are additional documentation only; all original release source files retain their exact bytes."
+}

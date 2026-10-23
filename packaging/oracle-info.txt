@@ -1,0 +1,21 @@
+Oracle Rack Alpha 0.1.0 / Karsei
+Windows 11 x64 / VST3 effect / GPLv3
+
+30 local analysis scenarios, 1–30 second listening, Vamp processing and
+hosting of compatible user VST2/VST3 effects. VampDAW is not required.
+This installer includes the corresponding source archive.
+
+Install the plugin, rescan VST3 in your DAW, then use Scan plugins inside
+Oracle to find your effects. The default is the standard per-user folder:
+%LOCALAPPDATA%\Programs\Common\VST3\Oracle Rack.vst3
+
+Automatic mapping uses parameter names, units and numeric readouts.
+Unknown controls remain unchanged and are listed in the report.
+Nested plugins require their own working installation and licenses.
+The alpha is not certified in every DAW or with every commercial plugin.
+
+Русский: после установки пересканируйте VST3 в своей DAW. Если плагин
+не найден, добавьте %LOCALAPPDATA%\Programs\Common\VST3 в поиск хоста.
+В Oracle нажмите Scan plugins для поиска эффектов. Нераспознанные
+регуляторы остаются без изменений и показываются в отчёте. Данные
+пользователя и проекты хоста при удалении не стираются.

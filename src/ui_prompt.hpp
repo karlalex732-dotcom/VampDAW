@@ -1,0 +1,15 @@
+#include "plugin_brand.hpp"
+#include "native_window_style.hpp"
+#pragma once
+#include "model.hpp"
+#include "native_scale.hpp"
+#include <optional>
+namespace vamp {
+struct TextPrompt{
+    HWND window=nullptr,edit=nullptr;bool done=false,accepted=false;std::wstring value;double zoom=1;std::vector<HFONT>fonts;
+    ~TextPrompt(){for(auto font:fonts)DeleteObject(font);}
+    static LRESULT CALLBACK proc(HWND h,UINT message,WPARAM w,LPARAM l){auto*self=(TextPrompt*)GetWindowLongPtrW(h,GWLP_USERDATA);if(message==WM_NCCREATE){self=(TextPrompt*)((CREATESTRUCTW*)l)->lpCreateParams;self->window=h;SetWindowLongPtrW(h,GWLP_USERDATA,(LONG_PTR)self);}if(!self)return DefWindowProcW(h,message,w,l);if(message==WM_COMMAND&&(LOWORD(w)==IDOK||LOWORD(w)==IDCANCEL)){self->accepted=LOWORD(w)==IDOK;if(self->accepted){int size=GetWindowTextLengthW(self->edit);self->value.resize(size+1);GetWindowTextW(self->edit,self->value.data(),size+1);self->value.resize(size);}self->done=true;DestroyWindow(h);return 0;}if(message==WM_CLOSE){self->done=true;DestroyWindow(h);return 0;}return DefWindowProcW(h,message,w,l);}
+    static std::optional<std::wstring>show(HWND parent,const std::wstring&title,const std::wstring&initial){static bool registered=false;if(!registered){WNDCLASSW c{};c.hInstance=pluginUiModule();c.lpfnWndProc=proc;c.lpszClassName=pluginPromptClass;c.hbrBackground=(HBRUSH)(COLOR_WINDOW+1);c.hCursor=LoadCursorW(nullptr,IDC_ARROW);RegisterClassW(&c);registered=true;}TextPrompt prompt;RECT rect;GetWindowRect(parent,&rect);HWND h=CreateWindowExW(WS_EX_DLGMODALFRAME,pluginPromptClass,title.c_str(),WS_POPUP|WS_CAPTION|WS_SYSMENU|WS_CLIPCHILDREN,rect.left+(rect.right-rect.left)/2-235,rect.top+(rect.bottom-rect.top)/2-85,470,170,parent,nullptr,pluginUiModule(),&prompt);if(!h)return {};
+        prompt.edit=CreateWindowExW(WS_EX_CLIENTEDGE,L"EDIT",initial.c_str(),WS_CHILD|WS_VISIBLE|WS_TABSTOP|ES_AUTOHSCROLL,18,22,420,27,h,(HMENU)100,pluginUiModule(),nullptr);HWND ok=CreateWindowExW(0,L"BUTTON",L"OK",WS_CHILD|WS_VISIBLE|WS_TABSTOP|BS_DEFPUSHBUTTON,242,76,92,29,h,(HMENU)IDOK,pluginUiModule(),nullptr);HWND cancel=CreateWindowExW(0,L"BUTTON",ui::translate(L"Cancel").c_str(),WS_CHILD|WS_VISIBLE|WS_TABSTOP,344,76,94,29,h,(HMENU)IDCANCEL,pluginUiModule(),nullptr);for(HWND control:{prompt.edit,ok,cancel})SendMessageW(control,WM_SETFONT,(WPARAM)GetStockObject(DEFAULT_GUI_FONT),TRUE);ui::styleNativePanel(h);EnableWindow(parent,FALSE);ShowWindow(h,SW_SHOW);SetFocus(prompt.edit);SendMessageW(prompt.edit,EM_SETSEL,0,-1);MSG message;while(!prompt.done){int result=GetMessageW(&message,nullptr,0,0);if(result<=0){if(result==0)PostQuitMessage((int)message.wParam);break;}if(message.message==WM_KEYDOWN&&message.wParam==VK_ESCAPE){SendMessageW(h,WM_COMMAND,IDCANCEL,0);continue;}if(message.message==WM_KEYDOWN&&message.wParam==VK_RETURN){SendMessageW(h,WM_COMMAND,IDOK,0);continue;}if(!IsDialogMessageW(h,&message)){TranslateMessage(&message);DispatchMessageW(&message);}}if(IsWindow(h))DestroyWindow(h);EnableWindow(parent,TRUE);SetForegroundWindow(parent);if(prompt.accepted)return prompt.value;return {};}
+};
+}

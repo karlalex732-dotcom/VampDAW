@@ -1,0 +1,24 @@
+#include "dsp_workers.hpp"
+#include "frame_pacer.hpp"
+#include "json/json.hpp"
+#include <fstream>
+#include <set>
+#include <stdexcept>
+#include <chrono>
+using namespace vamp;using Json=nlohmann::json;
+void check(bool value,const char*why){if(!value)throw std::runtime_error(why);}
+struct PacedWindow{FramePacer pacer;std::vector<double>frames;double frequency=1;static LRESULT CALLBACK proc(HWND h,UINT m,WPARAM w,LPARAM l){auto*s=(PacedWindow*)GetWindowLongPtrW(h,GWLP_USERDATA);if(m==WM_NCCREATE){s=(PacedWindow*)((CREATESTRUCTW*)l)->lpCreateParams;SetWindowLongPtrW(h,GWLP_USERDATA,(LONG_PTR)s);}if(s&&m==FramePulseMessage){if(s->pacer.allowPaint()){LARGE_INTEGER now;QueryPerformanceCounter(&now);s->frames.push_back(now.QuadPart/s->frequency);}s->pacer.acknowledge();return 0;}return DefWindowProcW(h,m,w,l);}};
+void pump(int milliseconds){auto end=GetTickCount64()+milliseconds;while(GetTickCount64()<end){MSG message;while(PeekMessageW(&message,nullptr,0,0,PM_REMOVE)){TranslateMessage(&message);DispatchMessageW(&message);}MsgWaitForMultipleObjectsEx(0,nullptr,2,QS_ALLINPUT,MWMO_INPUTAVAILABLE);}}
+int main(){Json report={{"passed",false}};try{
+    check(resolvedDspProcessors(0,128)==128&&resolvedDspProcessors(96,128)==96&&resolvedDspProcessors(200,128)==128,"Processor counts above eight and above 64 are not truncated");
+    DspWorkers pool;pool.configure(0);int available=availableDspProcessors();check(pool.size()==available,"All logical processors can be selected on this host");int used=pool.size();
+    struct Barrier{std::atomic<int>arrived{0};int count;HANDLE ready;std::vector<DWORD>ids;std::atomic<bool>failed{false};Barrier(int n):count(n),ready(CreateEventW(nullptr,TRUE,FALSE,nullptr)),ids(n){}~Barrier(){CloseHandle(ready);}}barrier(used);
+    pool.run(used,&barrier,[](void*p,int n){auto&b=*(Barrier*)p;b.ids[n]=GetCurrentThreadId();if(b.arrived.fetch_add(1)+1==b.count)SetEvent(b.ready);if(WaitForSingleObject(b.ready,5000)!=WAIT_OBJECT_0)b.failed=true;});
+    check(!barrier.failed&&std::set<DWORD>(barrier.ids.begin(),barrier.ids.end()).size()==(size_t)used,"All configured workers and the calling render thread execute jobs");
+    std::array<std::atomic<int>,513>visits{};for(auto&v:visits)v=0;for(int round=0;round<100;round++)pool.run(513,&visits,[](void*p,int n){(*(decltype(visits)*)p)[n]++;});for(auto&v:visits)check(v==100,"Every independent channel job executes exactly once");
+    pool.run(2,nullptr,[](void*,int n){if(n==1)throw std::runtime_error("Expected test exception");});check(pool.faults()==1,"An exceptional task completes without stranding the barrier");pool.configure(1);check(pool.size()==1,"Single thread remains available");pool.configure(0);check(pool.size()==available,"All-processor mode restores after reconfiguration");pool.configure(1);
+    WNDCLASSW cls{};cls.hInstance=GetModuleHandleW(nullptr);cls.lpszClassName=L"VampPerformancePacerCheck";cls.lpfnWndProc=PacedWindow::proc;RegisterClassW(&cls);PacedWindow state;LARGE_INTEGER f;QueryPerformanceFrequency(&f);state.frequency=f.QuadPart;state.frames.reserve(1000);HWND window=CreateWindowExW(0,cls.lpszClassName,L"Hidden pacing check",0,0,0,20,20,nullptr,nullptr,cls.hInstance,&state);check(window!=nullptr,"Hidden test window");Json pacing=Json::array();
+    for(int fps:{60,120,240}){state.frames.clear();check(state.pacer.start(window,fps),"High-resolution scheduler starts");state.pacer.setContinuous(true);pump(420);state.pacer.setContinuous(false);pump(25);check(state.frames.size()>=8&&state.frames.size()<=(size_t)(fps*.445+2),"Scheduled frame count respects the cap");double shortest=10;for(size_t i=1;i<state.frames.size();i++)shortest=std::min(shortest,state.frames[i]-state.frames[i-1]);check(shortest>=1./fps-.00015,"Adjacent frames never exceed the requested rate");auto count=state.frames.size();pump(120);check(count==state.frames.size(),"Idle scheduler posts no frames");state.pacer.request();pump(35);check(state.frames.size()==count+1,"A deferred repaint wakes an idle scheduler once");pacing.push_back({{"limit",fps},{"frames",count},{"minimum_interval_ms",shortest*1000}});state.pacer.stop();pump(5);}
+    DestroyWindow(window);check(normalizedFrameLimit(-1)==60&&normalizedFrameLimit(999)==240,"Invalid saved limits are bounded");
+    report.update({{"passed",true},{"available_logical_processors",available},{"workers_exercised",used},{"synthetic_128_processor_counts",true},{"channel_jobs_checked",51300},{"single_all_reconfiguration",true},{"pacing",pacing},{"desktop_render_fps_measured",false},{"idle_scheduler_sleeps",true}});
+}catch(const std::exception&e){report["error"]=e.what();}CreateDirectoryW(L"work/test-results/update0417",nullptr);std::ofstream(L"work/test-results/update0417/performance.json")<<report.dump(2);return report.value("passed",false)?0:1;}

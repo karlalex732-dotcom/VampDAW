@@ -1,0 +1,226 @@
+{
+  "version": "0.4.19-alpha",
+  "passed": true,
+  "application_sha256": "bd519c74c563a8b42db9e13de47fddbf7b078358bd5c586328e52075322d861f",
+  "scope": "Independent Piano roll height and pitch density, Sequencer width and 1–16 bars / 256 steps, persisted editor preferences",
+  "architecture": "Windows x64 baseline / Intel and AMD",
+  "desktop_interaction_tested": false,
+  "ara_included": true,
+  "commercial_ara_plugins_tested": false,
+  "verified_at_utc": "2026-10-23T07:35:26.476510+00:00",
+  "tests": {
+    "editors": {
+      "actual_mouse_resize_callbacks": true,
+      "bar_16_note_and_pattern_extension": true,
+      "desktop_interaction_tested": false,
+      "layouts": 44,
+      "passed": true,
+      "piano_3_4_5_octaves": true,
+      "pitch_hit_testing": true,
+      "previews": [
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\prepare.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\piano-0-1180-3.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\prepare.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\piano-0-1180-4.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\prepare.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\piano-0-1180-5.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\prepare.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\piano-0-1920-3.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\prepare.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\piano-0-1920-4.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\prepare.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\piano-0-1920-5.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\prepare.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\piano-1-1180-3.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\prepare.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\piano-1-1180-4.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\prepare.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\piano-1-1180-5.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\prepare.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\piano-1-1920-3.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\prepare.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\piano-1-1920-4.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\prepare.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\piano-1-1920-5.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\piano-short.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\piano-tall.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\piano-small.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\piano-five-octaves-small-screen.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\sequencer-0-1180-1.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\sequencer-0-1180-4.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\sequencer-0-1180-16.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\sequencer-0-1920-1.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\sequencer-0-1920-4.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\sequencer-0-1920-16.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\sequencer-1-1180-1.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\sequencer-1-1180-4.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\sequencer-1-1180-16.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\sequencer-1-1920-1.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\sequencer-1-1920-4.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\sequencer-1-1920-16.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\sequencer-narrow.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\sequencer-wide.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\sequencer-restored-width.png",
+        "${workspace}\\work\\test-results\\update0419\\editor-previews\\sequencer-sixteen-bars.png"
+      ],
+      "sequencer_256_steps": true,
+      "settings_persistence": true,
+      "view_changes_leave_song_unchanged": true
+    },
+    "sequencer": {
+      "desktop_interaction_tested": false,
+      "horizontal_and_vertical_scroll_bounds": true,
+      "independent_panel_scale": true,
+      "layout_cases": 12,
+      "passed": true,
+      "reset_button_actual_mouse_callback": true,
+      "shared_renderer_previews": [
+        "${workspace}\\work\\test-results\\update0419\\sequencer-previews\\0-1180-50.png",
+        "${workspace}\\work\\test-results\\update0419\\sequencer-previews\\0-1180-100.png",
+        "${workspace}\\work\\test-results\\update0419\\sequencer-previews\\0-1180-200.png",
+        "${workspace}\\work\\test-results\\update0419\\sequencer-previews\\0-1920-50.png",
+        "${workspace}\\work\\test-results\\update0419\\sequencer-previews\\0-1920-100.png",
+        "${workspace}\\work\\test-results\\update0419\\sequencer-previews\\0-1920-200.png",
+        "${workspace}\\work\\test-results\\update0419\\sequencer-previews\\1-1180-50.png",
+        "${workspace}\\work\\test-results\\update0419\\sequencer-previews\\1-1180-100.png",
+        "${workspace}\\work\\test-results\\update0419\\sequencer-previews\\1-1180-200.png",
+        "${workspace}\\work\\test-results\\update0419\\sequencer-previews\\1-1920-50.png",
+        "${workspace}\\work\\test-results\\update0419\\sequencer-previews\\1-1920-100.png",
+        "${workspace}\\work\\test-results\\update0419\\sequencer-previews\\1-1920-200.png"
+      ],
+      "stem_main_focus_escape": true,
+      "zoom_persistence": true,
+      "zoom_range_50_to_200": true
+    },
+    "settings": {
+      "actual_action": true,
+      "desktop_interaction_tested": false,
+      "dsp_settings_round_trip": true,
+      "fps_settings_round_trip": true,
+      "fps_steps": [
+        60,
+        90,
+        120,
+        144,
+        165,
+        180,
+        210,
+        240
+      ],
+      "layouts": 6,
+      "logical_processors": 20,
+      "passed": true,
+      "previews": [
+        "${workspace}\\work\\test-results\\update0419\\themes-0-1180.png",
+        "${workspace}\\work\\test-results\\update0419\\themes-0-1440.png",
+        "${workspace}\\work\\test-results\\update0419\\themes-0-1920.png",
+        "${workspace}\\work\\test-results\\update0419\\themes-1-1180.png",
+        "${workspace}\\work\\test-results\\update0419\\themes-1-1440.png",
+        "${workspace}\\work\\test-results\\update0419\\themes-1-1920.png"
+      ]
+    },
+    "loading": {
+      "desktop_interaction_tested": false,
+      "destination_unchanged_until_commit": true,
+      "frames": 160,
+      "gdi_objects_after": 9,
+      "gdi_objects_before": 9,
+      "layouts": 20,
+      "maximum_channel_difference": 0,
+      "passed": true,
+      "pixels_compared": 10777616,
+      "preview": "${workspace}\\work\\test-results\\update0419\\loading-footer.png",
+      "rapid_updates": 200,
+      "workspace_untouched": true
+    },
+    "workspace": {
+      "delete_placement_only": true,
+      "desktop_interaction_tested": false,
+      "embedded_dracula": true,
+      "folder_freeze_sound_difference": 7.450580596923828e-09,
+      "folder_queue_freeze_unfreeze_cancel": true,
+      "layouts": 15,
+      "loading_scope": true,
+      "native_style": true,
+      "passed": true,
+      "pool_multiselection_search": true,
+      "shared_renderer_previews": [
+        "${workspace}\\work\\test-results\\update0419\\workspace-previews\\arranger-0-1180.png",
+        "${workspace}\\work\\test-results\\update0419\\workspace-previews\\arranger-0-1440.png",
+        "${workspace}\\work\\test-results\\update0419\\workspace-previews\\arranger-0-1920.png",
+        "${workspace}\\work\\test-results\\update0419\\workspace-previews\\arranger-1-1180.png",
+        "${workspace}\\work\\test-results\\update0419\\workspace-previews\\arranger-1-1440.png",
+        "${workspace}\\work\\test-results\\update0419\\workspace-previews\\arranger-1-1920.png",
+        "${workspace}\\work\\test-results\\update0419\\workspace-previews\\arranger-compact-workspace.png",
+        "${workspace}\\work\\test-results\\update0419\\workspace-previews\\mixer-compact-workspace.png",
+        "${workspace}\\work\\test-results\\update0419\\workspace-previews\\mixer-1180.png",
+        "${workspace}\\work\\test-results\\update0419\\workspace-previews\\mixer-1920.png",
+        "${workspace}\\work\\test-results\\update0419\\workspace-previews\\playlist-beats.png",
+        "${workspace}\\work\\test-results\\update0419\\workspace-previews\\playlist-bars.png",
+        "${workspace}\\work\\test-results\\update0419\\workspace-previews\\playlist-overview.png",
+        "${workspace}\\work\\test-results\\update0419\\workspace-previews\\startup-portrait.png",
+        "${workspace}\\work\\test-results\\update0419\\workspace-previews\\loading-status.png",
+        "${workspace}\\work\\test-results\\update0419\\workspace-previews\\project-pool.png",
+        "${workspace}\\work\\test-results\\update0419\\workspace-previews\\audio-midi.png"
+      ]
+    },
+    "ara_ui": {
+      "ara_picker_filter": true,
+      "bounce_subset_and_restore": true,
+      "commercial_plugins_tested": false,
+      "desktop_interaction_tested": false,
+      "immediate_save": true,
+      "native_style": true,
+      "passed": true,
+      "playlist_undo": true,
+      "previews": [
+        "${workspace}\\work\\test-results\\update0419\\ara-picker-0.png",
+        "${workspace}\\work\\test-results\\update0419\\ara-picker-1.png"
+      ],
+      "project_restore": true
+    },
+    "portable": {
+      "asio_driver_count": 2,
+      "binary_directory": "${workspace}",
+      "data_directory": "${workspace}\\work\\test-results\\update0419\\portable-data",
+      "encoder_path": "${workspace}\\tools/ffmpeg/bin/ffmpeg.exe",
+      "exports": [
+        {
+          "bytes": 288044,
+          "format": "WAV"
+        },
+        {
+          "bytes": 25389,
+          "format": "MP3"
+        },
+        {
+          "bytes": 37005,
+          "format": "FLAC"
+        },
+        {
+          "bytes": 8992,
+          "format": "OGG Vorbis"
+        },
+        {
+          "bytes": 12598,
+          "format": "AAC / M4A"
+        },
+        {
+          "bytes": 31537,
+          "format": "Opus"
+        },
+        {
+          "bytes": 288054,
+          "format": "AIFF"
+        }
+      ],
+      "installed": false,
+      "passed": true,
+      "project_round_trip": true,
+      "settings_directory": "${workspace}\\work\\test-results\\update0419\\portable-data\\Settings",
+      "settings_writable": true,
+      "standard_vst3_directory": "C:\\Program Files\\Common Files\\VST3",
+      "version": "0.4.19-alpha"
+    }
+  }
+}

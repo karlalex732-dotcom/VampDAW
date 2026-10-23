@@ -1,0 +1,97 @@
+VampDAW Alpha 0.4.8
+
+VampDAW is distributed under GNU GPL version 3 (GPL-3.0-only).
+Copyright (C) 2026 VampDAW contributors. See LICENSE.txt.
+Complete corresponding source is included in Sources/VampDAW-0.4.8-source.zip,
+including application, SDK interface sources, codec sources and build scripts.
+External VST plugins and device drivers are not bundled.
+
+1. Steinberg VST3 pluginterfaces, revision 4f547e8.
+   https://github.com/steinbergmedia/vst3_pluginterfaces
+   MIT license. Full notice: licenses/VST3-MIT.txt.
+   VST is a trademark of Steinberg Media Technologies GmbH.
+
+2. nlohmann/json 3.12.0.
+   https://github.com/nlohmann/json/tree/v3.12.0
+   MIT license. Full notice: licenses/JSON-MIT.txt.
+
+3. Steinberg ASIO SDK 2.3.4 interface headers, 2025-10-15.
+   https://www.steinberg.net/asiosdk
+   The GPL version 3 alternative is selected for this release.
+   SDK notice: licenses/ASIO-SDK.txt. GPL text: LICENSE.txt.
+   Corresponding interface headers are included in the source archive.
+   ASIO is a trademark of Steinberg Media Technologies GmbH.
+
+4. FFmpeg 8.1.3, purpose-built static audio-only Windows x64 encoder.
+   https://ffmpeg.org/ and https://ffmpeg.org/releases/ffmpeg-8.1.3.tar.xz
+   Separate subprocess, not linked into the real-time audio engine.
+   LGPL version 2.1 or later; no GPL-only components are enabled in this build.
+   Original notices and LGPL/GPL texts: licenses/FFmpeg-*.
+   Complete unmodified source is in dependency-sources in the source archive.
+   Configure flags: packaging/build-codecs.sh. Included codec libraries:
+     LAME 3.100: https://lame.sourceforge.io/ ; LGPL v2 or later.
+     libogg 1.3.6: https://xiph.org/ogg/ ; BSD-style license.
+     libvorbis 1.3.7: https://xiph.org/vorbis/ ; BSD-style license.
+     Opus 1.5.2: https://opus-codec.org/ ; BSD-style license and patent grants.
+   Original full notices: licenses/LAME-*, Ogg-*, Vorbis-* and Opus-*.
+   Exact codec sources and hashes are included in the source archive.
+   No restrictions are imposed on replacing or modifying the separate encoder.
+
+5. Compiler runtime notices (development tools are not installed for testers).
+   Zig 0.15.2: https://ziglang.org/download/0.15.2/ ; MIT license.
+   LLVM libc++/libc++abi/runtime: Apache 2.0 with LLVM exceptions; original
+   notices are retained in licenses/LLVM-* and Zig-MIT.txt.
+   MinGW-w64 runtime: original notices in licenses/MinGW-*.txt.
+   w64devkit 2.10.1 / GCC 16.2.0 builds the separate encoder.
+   GCC runtime library exception and GPL text: licenses/GCC-*.
+
+6. Installer built with Inno Setup 6.7.3.
+   https://jrsoftware.org/ ; Copyright Jordan Russell and Martijn Laan.
+   Original installer notice: licenses/Inno-Setup.txt.
+
+Source can be copied from the installed Sources folder without contacting the
+developer. Component licenses remain applicable to their respective files.
+Binary and source hashes are recorded in manifest.json.
+
+7. Optional local Stem Engine, installed by default in the full package.
+   CPython 3.12: PSF and retained third-party licenses, tools/stems/python/LICENSE.txt.
+   PyTorch/torchaudio 2.5.1 CPU, NumPy, Demucs 4.0.1 and runtime dependencies:
+   original wheel license files are retained alongside each package/dist-info.
+   Exact versions: tools/stems/requirements-lock.txt. Demucs MIT notice is also
+   licenses/Demucs-MIT.txt. Default 4/6 weights come from Meta's Demucs repository;
+   source URLs and SHA-256 are in tools/stems/bundled-models.json.
+   Specialist inference code is vendored from ZFTurbo MSST v1.0.21 under MIT;
+   tools/stems/vendor/LICENSE and SOURCES.json retain notice and provenance.
+   Specialist weights are not bundled: pinned URLs, revision and SHA-256 are in
+   tools/stems/wind-models.json. They are fetched from the upstream repository.
+   The MIT inference-code notice does not assert a separate weight-file license.
+ARCHIVAL STARTUP PORTRAIT
+The embedded photograph depicts Bela Lugosi as Dracula (1931), anonymous,
+Universal Studios publicity photograph. Original source and public-domain notice:
+https://commons.wikimedia.org/wiki/File:Bela_Lugosi_as_Dracula,_anonymous_photograph_from_1931,_Universal_Studios.jpg
+Original JPEG: 915 x 1193. The application displays a cropped head-and-shoulders
+view in monochrome; the original file is retained in the corresponding source.
+Wikimedia Commons marks this specific photograph PD-US-not-renewed. The notice
+describes the photograph, not the copyright status of the complete motion picture.
+
+
+VST2 INTERFACE / VESTIGE
+third_party/vestige/aeffectx.h is the VeSTige interface header from LMMS:
+https://github.com/LMMS/lmms/blob/master/include/aeffectx.h
+Copyright (c) 2006 Javier Serrano Polo. GPL version 2 or any later version;
+used and distributed with VampDAW under GPL version 3. Original copyright,
+license and warranty notices are retained verbatim in that header.
+License text: licenses/VeSTige-GPL3.txt and LICENSE.txt.
+No proprietary Steinberg VST2 SDK is included.
+
+FLP FORMAT REFERENCE
+The original Vamp import adapter uses format/event-layout facts documented in
+PyFLP by demberto (2022), GPL-3.0-or-later:
+https://github.com/demberto/PyFLP
+The adapter is distributed under VampDAW's GPL version 3. PyFLP itself is not
+installed or required. Its format references are attributed in the adapter.
+ALS reference: https://github.com/madisonrickert/ableton-tools/blob/main/engine/references/als-format.md
+Original converter source: tools/project-import/import_project.py.
+
+ARA API 2.3.0
+Copyright (c) 2012-2025 Celemony Software GmbH. Developed in cooperation with PreSonus Software Ltd. Licensed under Apache License 2.0. Source: https://github.com/Celemony/ARA_API, tag releases/2.3.0, commit 65ec5c43b943a48cb5446f448a0492db6af8534b. License: licenses/ARA-Apache-2.0.txt (source: third_party/ara/LICENSE.txt). VampDAW implements its own host integration. ARA is a trademark of Celemony Software GmbH.

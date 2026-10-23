@@ -1,0 +1,2 @@
+# Preserve byte-for-byte source hashes across Windows and Unix checkouts.
+* -text

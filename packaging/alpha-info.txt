@@ -1,0 +1,37 @@
+VampDAW Alpha 0.4.19 / Windows 11 x64
+
+Исправлены пути к звукам между дисками и загрузка старых проектов с пустыми ссылками.
+Поиск отсутствующего аудио: SESSION → Locate project audio…
+
+Установка работает без интернета и без инструментов разработки.
+Программа устанавливается для текущего пользователя, без прав администратора.
+
+Проекты, записи и звуки: Документы\VampDAW
+Настройки и кэш: %LOCALAPPDATA%\VampDAW
+Обновление и удаление программы сохраняют эти данные.
+
+В комплекте: ASIO / WASAPI, USB MIDI, VST2/VST3 host, семь форматов экспорта.
+Night Desk: Warp, темп/размер, Groove Pool, ретроспективная запись, версии A/B,
+многопоточная обработка и запись нескольких входов. Инструкция: docs/UPDATE-0.4.13.md.
+Сторонние плагины и драйверы устройств устанавливаются отдельно.
+Это альфа для тестирования: сохраняйте резервные копии важных проектов.
+
+Исходники программы и кодеков находятся в папке Sources.
+VampDAW распространяется по GNU GPLv3; лицензии зависимостей приложены отдельно.
+
+English: offline, per-user Windows 11 x64 installation. No development tools needed.
+Projects: Documents\VampDAW. Settings/cache: %LOCALAPPDATA%\VampDAW.
+Updates and uninstall preserve these folders. External plugins/drivers are separate.
+This is an alpha build. Keep backups of important work. Complete source is in Sources.
+
+Полная установка включает Blood Stems: локальный CPU-движок и модели 4/6 стемов.
+Дополнительные модели духовых и Fine tuned загружаются при первом использовании.
+Full installation includes the local CPU Stem Engine and 4/6-stem models.
+Additional specialist and fine-tuned models download on first use.
+
+0.4.14: полноразмерные волны аудио, детализация при zoom и 100 поджанров
+в генераторе ударных. Инструкция: docs/UPDATE-0.4.14.md.
+
+0.4.19: Playlist — перенос за плашку, подрезка краёв, фейды и Stretch;
+загрузка в нижней панели. Oracle — Vamp / все плагины, разбор регуляторов,
+пробный прогон и согласование уровней цепочки. docs/UPDATE-0.4.19.md.

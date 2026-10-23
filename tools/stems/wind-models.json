@@ -1,0 +1,58 @@
+{
+  "wind": {
+    "weights_url": "https://huggingface.co/noblebarkrr/BS-Roformer-MVSep-Mega-53-stems/resolve/0677941f9cdfd891a6bc3336229244e197035327/v1/bs_mega_53stem_wind_mvsep.ckpt",
+    "sha256": "c2ae2f8b7aa777dba3596fa8a8c0aec42b1bf3c493ebdc9aaf2daeffcab9d025",
+    "bytes": 77616219,
+    "config_url": "https://huggingface.co/noblebarkrr/BS-Roformer-MVSep-Mega-53-stems/resolve/0677941f9cdfd891a6bc3336229244e197035327/v1/bs_mega_53stem_wind_mvsep_config.yaml",
+    "config_sha256": "3197bdbdd9b378f6c73abe6251220cfa3b4f16c8d8a0ead155d4b3a06d056d51"
+  },
+  "brass": {
+    "weights_url": "https://huggingface.co/noblebarkrr/BS-Roformer-MVSep-Mega-53-stems/resolve/0677941f9cdfd891a6bc3336229244e197035327/v1/bs_mega_53stem_brass_mvsep.ckpt",
+    "sha256": "e7d7bf86a031f3253019ff9dc424485d8085946fc428ab66522c568ee17b8027",
+    "bytes": 77616988,
+    "config_url": "https://huggingface.co/noblebarkrr/BS-Roformer-MVSep-Mega-53-stems/resolve/0677941f9cdfd891a6bc3336229244e197035327/v1/bs_mega_53stem_brass_mvsep_config.yaml",
+    "config_sha256": "bcd8b505b2718692111a5b18aedb001bda80339135985e4337a3abc842ad16ce"
+  },
+  "woodwind": {
+    "weights_url": "https://huggingface.co/noblebarkrr/BS-Roformer-MVSep-Mega-53-stems/resolve/0677941f9cdfd891a6bc3336229244e197035327/v1/bs_mega_53stem_woodwind_mvsep.ckpt",
+    "sha256": "9a1335d2cd21cd4fdd6964e7ab96c9e9776b2643644f763e2f59bb6c53d39060",
+    "bytes": 77619103,
+    "config_url": "https://huggingface.co/noblebarkrr/BS-Roformer-MVSep-Mega-53-stems/resolve/0677941f9cdfd891a6bc3336229244e197035327/v1/bs_mega_53stem_woodwind_mvsep_config.yaml",
+    "config_sha256": "ca22c9c7f14dc6dbe3c3d00ea0e16e6f5c7d40a14cb0be08ec0e6d25ff448fa1"
+  },
+  "saxophone": {
+    "weights_url": "https://huggingface.co/noblebarkrr/BS-Roformer-MVSep-Mega-53-stems/resolve/0677941f9cdfd891a6bc3336229244e197035327/v1/bs_mega_53stem_saxophone_mvsep.ckpt",
+    "sha256": "7027da3852828194f224f5f822582a38015b0afc452fe3e407229084c10de6a9",
+    "bytes": 77619808,
+    "config_url": "https://huggingface.co/noblebarkrr/BS-Roformer-MVSep-Mega-53-stems/resolve/0677941f9cdfd891a6bc3336229244e197035327/v1/bs_mega_53stem_saxophone_mvsep_config.yaml",
+    "config_sha256": "489715723cd49dadf3dda1b80eed991ea8e4cf24558e04929e03026421a87c36"
+  },
+  "trumpet": {
+    "weights_url": "https://huggingface.co/noblebarkrr/BS-Roformer-MVSep-Mega-53-stems/resolve/0677941f9cdfd891a6bc3336229244e197035327/v1/bs_mega_53stem_trumpet_mvsep.ckpt",
+    "sha256": "47530e8c6ee14eb3f4469efc629b0a3942cfff062f3a7eb788cb15355fd7b724",
+    "bytes": 77618398,
+    "config_url": "https://huggingface.co/noblebarkrr/BS-Roformer-MVSep-Mega-53-stems/resolve/0677941f9cdfd891a6bc3336229244e197035327/v1/bs_mega_53stem_trumpet_mvsep_config.yaml",
+    "config_sha256": "037f31b2a6b81d9e82597c38b3876f21438fea1ad0987bd13afec52937040829"
+  },
+  "flute": {
+    "weights_url": "https://huggingface.co/noblebarkrr/BS-Roformer-MVSep-Mega-53-stems/resolve/0677941f9cdfd891a6bc3336229244e197035327/v1/bs_mega_53stem_flute_mvsep.ckpt",
+    "sha256": "65dfa1e2c093165812cbdf8945715e7f71566bc3a8196ecad3edce1d29bb2e45",
+    "bytes": 77616988,
+    "config_url": "https://huggingface.co/noblebarkrr/BS-Roformer-MVSep-Mega-53-stems/resolve/0677941f9cdfd891a6bc3336229244e197035327/v1/bs_mega_53stem_flute_mvsep_config.yaml",
+    "config_sha256": "2fca5aef72353b12c965b6cfab5cc416298a9ae4ccf1063f52f8627a236fba3e"
+  },
+  "clarinet": {
+    "weights_url": "https://huggingface.co/noblebarkrr/BS-Roformer-MVSep-Mega-53-stems/resolve/0677941f9cdfd891a6bc3336229244e197035327/v1/bs_mega_53stem_clarinet_mvsep.ckpt",
+    "sha256": "3c4ac033c03727943a491e05dc9c9aebbd92afc3d8e83b3484881e9ed3f3dde7",
+    "bytes": 77619103,
+    "config_url": "https://huggingface.co/noblebarkrr/BS-Roformer-MVSep-Mega-53-stems/resolve/0677941f9cdfd891a6bc3336229244e197035327/v1/bs_mega_53stem_clarinet_mvsep_config.yaml",
+    "config_sha256": "ecd724a655896c6300ea344fbf9bd98d532d0b6efa92f8beab596b86a8ec0140"
+  },
+  "trombone": {
+    "weights_url": "https://huggingface.co/noblebarkrr/BS-Roformer-MVSep-Mega-53-stems/resolve/0677941f9cdfd891a6bc3336229244e197035327/v1/bs_mega_53stem_trombone_mvsep.ckpt",
+    "sha256": "f50d2e13e3e02cd74c3a5e084975d64a2a1f2090757c64495944a00823947f0d",
+    "bytes": 77619103,
+    "config_url": "https://huggingface.co/noblebarkrr/BS-Roformer-MVSep-Mega-53-stems/resolve/0677941f9cdfd891a6bc3336229244e197035327/v1/bs_mega_53stem_trombone_mvsep_config.yaml",
+    "config_sha256": "305d241c12a10ca5e8fdb3033cafef75bfb62722f15ae086b8ddf27139c3683e"
+  }
+}

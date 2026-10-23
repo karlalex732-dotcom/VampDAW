@@ -1,0 +1,14 @@
+{
+  "models/bs_roformer/bs_roformer.py": {
+    "url": "https://raw.githubusercontent.com/ZFTurbo/Music-Source-Separation-Training/v1.0.21/models/bs_roformer/bs_roformer.py",
+    "sha256": "e6b3643ae040e63d77730313341109ca123c14f05f5a98b27a48e497b9ae3d70"
+  },
+  "models/bs_roformer/attend.py": {
+    "url": "https://raw.githubusercontent.com/ZFTurbo/Music-Source-Separation-Training/v1.0.21/models/bs_roformer/attend.py",
+    "sha256": "0459d799ade55541df2994b0becf7aec12214491360c5a06e346f6d615eaed15"
+  },
+  "LICENSE": {
+    "url": "https://raw.githubusercontent.com/ZFTurbo/Music-Source-Separation-Training/v1.0.21/LICENSE",
+    "sha256": "3282dc057695ef5b9a64909a7092ca40b2c292c232580fc6ace6e5d665cc0207"
+  }
+}

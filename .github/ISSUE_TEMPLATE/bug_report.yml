@@ -1,0 +1,46 @@
+name: Bug report / Ошибка
+description: Report a reproducible problem in VampDAW Alpha / Сообщить об ошибке
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: "Please remove personal data and plugin license keys from attachments. / Удалите личные данные и ключи лицензий из вложений."
+  - type: input
+    id: version
+    attributes:
+      label: VampDAW version / Версия
+      placeholder: 0.4.19-alpha
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: System and audio setup / Система и звук
+      description: Windows build, CPU, driver, sample rate, buffer, plugin names and versions.
+      placeholder: Windows 11 build …, AMD/Intel …, ASIO/WASAPI …, 48000 Hz, 256 samples …
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps / Действия
+      placeholder: "1. Open …\n2. Click …\n3. …"
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior / Ожидаемый результат
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior / Реальный результат
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Error text, screenshots, logs / Текст ошибки и вложения
+      description: For a security detection include the exact detection name, file path and SHA-256. Share only material you may distribute.

@@ -1,0 +1,26 @@
+2 24 "oracle.manifest"
+1 VERSIONINFO
+FILEVERSION 0,1,0,0
+PRODUCTVERSION 0,1,0,0
+FILEFLAGSMASK 0x3fL
+FILEFLAGS 0
+FILEOS 0x40004L
+FILETYPE 0x2L
+BEGIN
+ BLOCK "StringFileInfo"
+ BEGIN
+  BLOCK "040904b0"
+  BEGIN
+   VALUE "CompanyName", "Karsei\0"
+   VALUE "FileDescription", "Oracle Rack VST3\0"
+   VALUE "FileVersion", "0.1.0\0"
+   VALUE "ProductName", "Oracle Rack\0"
+   VALUE "ProductVersion", "0.1.0 Alpha\0"
+   VALUE "LegalCopyright", "Karsei / GPL-3.0-only\0"
+  END
+ END
+ BLOCK "VarFileInfo"
+ BEGIN
+  VALUE "Translation", 0x409, 1200
+ END
+END
